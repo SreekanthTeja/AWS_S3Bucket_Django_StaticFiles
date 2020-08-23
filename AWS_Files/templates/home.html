@@ -1,0 +1,32 @@
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>S3 Example Static Only</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Dumping Static Files Into AWS S3 Bucket</h1>
+  </header>
+  <main>
+    <img src="{% static 'img/paint.png' %}">
+    <h2>It's working!</h2>
+  </main>
+
+  <form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    
+    <input type="file" name="myfile"><br>
+    <button type="submit">Upload</button>
+  </form>
+  {% if upload_file %}
+  <p>
+    <a href="{{upload_file}}">{{ upload_file }}</a>
+  </p>
+  {% endif %}
+
+
+
+</body>
+</html>
